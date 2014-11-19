@@ -36,6 +36,7 @@ LUAJIT:  2.0.2+
     location = / {
         set $cache_dir "/dev/shm/icombo/";
         set $css_trim "on";
+	set $max_files 20;
         set $admin_ip "192.168.8.63,192.168.8.181";
         content_by_lua_file /usr/local/nginx/conf/icombo/icombo.lua;
     }
@@ -63,7 +64,12 @@ set $css_trim "on";
 ```bash
 set $css_path_auto "images/";
 ```
-5、删除服务器的所有缓存文件（慎用）：  
+5、设置合并的最大文件数：
+```bash
+set $max_files 20;
+```
+5、
+6、删除服务器的所有缓存文件（慎用）：  
 配置$admin_ip：
 ```bash
 set $admin_ip "192.168.8.63,192.168.8.181";  

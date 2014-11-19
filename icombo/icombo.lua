@@ -1,5 +1,5 @@
 -------------------------------
--- version 0.2.0
+-- version 0.2.1
 -------------------------------
 -------- explode string -------
 function explode(s, delimiter)
@@ -147,6 +147,11 @@ local i_m_s            = ngx.req.get_headers()["If-Modified-Since"]
 ext = getFileExt(uris[1])
 if types[ext] == nil then
    log("extension is error")
+end
+
+-- max files
+if not empty(ngx.var.max_files) and size > tonumber(ngx.var.max_files) then
+   log("exceed max files")
 end
 
 -- set file directory

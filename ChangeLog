@@ -1,3 +1,6 @@
+v0.2.1
+1、增加max_files，限制文件合并数目
+
 v0.2
 1、采用流式输出，避免大并发下lua not enough memory的问题；
 2、优化代码
