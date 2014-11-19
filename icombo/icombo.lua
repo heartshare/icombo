@@ -1,5 +1,5 @@
 -------------------------------
--- version 0.2 beta
+-- version 0.2.0
 -------------------------------
 -------- explode string -------
 function explode(s, delimiter)
