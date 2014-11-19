@@ -36,7 +36,7 @@ LUAJIT:  2.0.2+
     location = / {
         set $cache_dir "/dev/shm/icombo/";
         set $css_trim "on";
-	set $max_files 20;
+        set $max_files 20;
         set $admin_ip "192.168.8.63,192.168.8.181";
         content_by_lua_file /usr/local/nginx/conf/icombo/icombo.lua;
     }
