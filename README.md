@@ -68,7 +68,6 @@ set $css_path_auto "images/";
 ```bash
 set $max_files 20;
 ```
-5、
 6、删除服务器的所有缓存文件（慎用）：  
 配置$admin_ip：
 ```bash
