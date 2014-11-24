@@ -224,7 +224,7 @@ end
 local bom      = string.char(0xEF, 0xBB, 0xBF)
 local dir_name = ""
 local t_out    = {}
-for i = 1,size ,1 do 
+for i = 1, size, 1 do 
     file_out = fileRead(file_dir..uris[i])
     if file_out == nil then
         log(uris[i].." read fail")
