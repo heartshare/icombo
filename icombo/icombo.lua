@@ -182,7 +182,7 @@ if ngx.var.arg_c ~=nil and ngx.var.admin_ip ~= nil then
 end
 
 -- get files last modify time
-for i = 1,size ,1 do 
+for i = 1, size, 1 do 
     file_info = posix.stat(file_dir..uris[i])
     if file_info == nil then
         log(uris[i].." file not found")
