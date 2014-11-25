@@ -266,9 +266,9 @@ if ext == "css" then
     if not empty(ngx.var.css_replace) then
         local replaces  = explode(ngx.var.css_replace, "|")
         size            = table.getn(replaces)
-        for i = 1,size ,1 do
+        for i = 1, size, 1 do
             local single = explode(replaces[i], ",")
-            out, count = ngx.re.gsub(out, single[1], single[2], 'i')
+            out, count   = ngx.re.gsub(out, single[1], single[2], 'i')
         end
     end
 end
