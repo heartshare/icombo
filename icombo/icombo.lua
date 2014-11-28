@@ -150,7 +150,8 @@ if types[ext] == nil then
 end
 
 -- max files
-if not empty(ngx.var.max_files) and size > tonumber(ngx.var.max_files) then
+local max_files = ngx.var.max_files
+if not empty(max_files) and size > tonumber(max_files) then
    log("exceed max files")
 end
 
@@ -174,7 +175,7 @@ if ngx.var.arg_c ~=nil and ngx.var.admin_ip ~= nil then
     local admin_ip = explode(ngx.var.admin_ip, ",");
     local ip       = getClientIp()
     if (tableFind(admin_ip, ip)) ~= nil then
-        delFile(posix, ngx.var.cache_dir)
+        delFile(posix, cache_dir)
         ngx.header.content_type  = "text/html"
         ngx.say('success')
         ngx.exit(200)
@@ -221,8 +222,9 @@ if not up_cache then
 end
 
 -- cache expire or nil
-local bom      = string.char(0xEF, 0xBB, 0xBF)
-local dir_name = ""
+local bom           = string.char(0xEF, 0xBB, 0xBF)
+local dir_name      = ""
+local css_path_auto = ngx.var.css_path_auto
 local t_out    = {}
 for i = 1, size, 1 do 
     file_out = fileRead(file_dir..uris[i])
@@ -244,11 +246,11 @@ for i = 1, size, 1 do
     end
     -- css_path_auto
     dir_name = posix.dirname(uris[i])
-    if not empty(ngx.var.css_path_auto) and dir_name ~= nil then
+    if not empty(css_path_auto) and dir_name ~= nil then
         -- handle ../
-        file_out, count = ngx.re.gsub(file_out, '../'..ngx.var.css_path_auto, './'..ngx.var.css_path_auto, 'i');
+        file_out, count = ngx.re.gsub(file_out, '../'..css_path_auto, './'..css_path_auto, 'i');
         -- handle ./
-        file_out, count = ngx.re.gsub(file_out, '(?<!/)'..ngx.var.css_path_auto, dir_name..'/'..ngx.var.css_path_auto, 'i');
+        file_out, count = ngx.re.gsub(file_out, '(?<!/)'..css_path_auto, dir_name..'/'..css_path_auto, 'i');
     end
     t_out[i] = file_out
 end
@@ -259,12 +261,14 @@ t_out = nil
 
 if ext == "css" then
     -- remove css comment
-    if ngx.var.css_trim ~=nil and ngx.var.css_trim:lower() == "on" then
+    local css_trim = ngx.var.css_trim
+    if css_trim ~=nil and css_trim:lower() == "on" then
         out = removeCssComents(out)
     end
     -- replace images path
-    if not empty(ngx.var.css_replace) then
-        local replaces  = explode(ngx.var.css_replace, "|")
+    local css_replace = ngx.var.css_replace
+    if not empty(css_replace) then
+        local replaces  = explode(css_replace, "|")
         size            = table.getn(replaces)
         for i = 1, size, 1 do
             local single = explode(replaces[i], ",")
