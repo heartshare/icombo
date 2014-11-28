@@ -130,10 +130,10 @@ local types            = {["js"]="application/x-javascript", ["css"]="text/css"}
 local posix            = require 'posix'
 local root             = ngx.var.document_root..'/'
 local file_dir         = root
-local cache_dir        = file_dir.."cache/"
 local req_url          = ngx.var.host..ngx.var.uri..file_lists
 local uris             = explode(file_lists, ",")
 local size             = table.getn(uris)
+local cache_dir        = ""
 local out              = ""
 local ext              = ""
 local file_out         = ""
