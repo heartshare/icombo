@@ -48,11 +48,11 @@ function fileStreamOut(filename)
         return
      end
      while true do
-        local lines, rest = f:read(BUFSIZE, "*line")
+        local lines, rest = f:read(BUFSIZE)
         if not lines then break end
         ngx.print(lines)
         ngx.flush(true)
-     end     
+     end
      f:close()    
 end
 -------- write file --------
