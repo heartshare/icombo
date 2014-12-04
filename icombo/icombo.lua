@@ -13,57 +13,57 @@ end
 function getClientIp()
         IP = ngx.req.get_headers()["X-Real-IP"]
         if IP == nil then
-                IP  = ngx.var.remote_addr 
+            IP  = ngx.var.remote_addr 
         end
         if IP == nil then
-                IP  = "unknown"
+            IP  = "unknown"
         end
         return IP
 end
 -------- table find --------
 function tableFind(t, e)
-  for _, v in ipairs(t) do
-    if v == e then
-      return true
+    for _, v in ipairs(t) do
+        if v == e then
+          return true
+        end
     end
-  end
-  return nil
+    return nil
 end
 -------- read file --------
 function fileRead(filename)
-     local f = io.open(filename, "r")
-     if f == nil then
-        return
-     end
-     local t = f:read("*all")
-     f:close()
-     return t
+    local f = io.open(filename, "r")
+    if f == nil then
+       return
+    end
+    local t = f:read("*all")
+    f:close()
+    return t
 end
 -------- stream output file --------
 function fileStreamOut(filename)
-     -- 8K
-     local BUFSIZE = 8192
-     local f = io.open(filename, "r")
-     if f == nil then
-        return
-     end
-     while true do
-        local lines, rest = f:read(BUFSIZE)
-        if not lines then break end
-        ngx.print(lines)
-        ngx.flush(true)
-     end
-     f:close()    
+    -- 8K
+    local BUFSIZE = 8192
+    local f = io.open(filename, "r")
+    if f == nil then
+       return
+    end
+    while true do
+       local lines, rest = f:read(BUFSIZE)
+       if not lines then break end
+       ngx.print(lines)
+       ngx.flush(true)
+    end
+    f:close()    
 end
 -------- write file --------
 function fileWrite(filename, content)
-     local f = io.open(filename, "w")
-     if f == nil then
-        return
-     end
-     local t = f:write(content)
-     f:close()
-     return true
+    local f = io.open(filename, "w")
+    if f == nil then
+       return
+    end
+    local t = f:write(content)
+    f:close()
+    return true
 end
 -------- get file extension --------
 function getFileExt(filename)
@@ -100,11 +100,11 @@ function removeCssComents(out)
 end
 -------- delete cache file -----------
 function delFile(posix, path)
-  for name in posix.files(path) do
-    if name ~= "." and name ~= ".." then
-        posix.unlink(path..name)
+    for name in posix.files(path) do
+        if name ~= "." and name ~= ".." then
+            posix.unlink(path..name)
+        end
     end
-  end
 end
 -------- log execute_time ---------
 function logTime()
@@ -146,13 +146,13 @@ local i_m_s            = ngx.req.get_headers()["If-Modified-Since"]
 -- only allow js css
 ext = getFileExt(uris[1])
 if types[ext] == nil then
-   log("extension is error")
+    log("extension is error")
 end
 
 -- max files
 local max_files = ngx.var.max_files
 if not empty(max_files) and size > tonumber(max_files) then
-   log("exceed max files")
+    log("exceed max files")
 end
 
 -- set file directory
@@ -211,7 +211,7 @@ local combo_file   = cache_dir..md5_req_url..".combo"
 local combo_modify = posix.stat(combo_file, "mtime") 
 -- cache nil
 if nil == combo_modify then
-   combo_modify = 0
+    combo_modify = 0
 end
 
 local up_cache = last_modify > combo_modify
