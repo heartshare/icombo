@@ -202,7 +202,6 @@ ngx.header.last_modified = http_last_modify
 
 -- return 304
 if i_m_s == http_last_modify then
-    ngx.status = 304
     ngx.exit(304)
 end
 
