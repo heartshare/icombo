@@ -59,7 +59,7 @@ end
 function fileWrite(filename, content)
     local f = io.open(filename, "w")
     if f == nil then
-       return
+       return nil
     end
     local t = f:write(content)
     f:close()
@@ -277,6 +277,9 @@ if ext == "css" then
     end
 end
 
-fileWrite(combo_file, out)
+local res = fileWrite(combo_file, out)
+if res == nil then
+    log('cache write fail')
+end
 posix.utime(combo_file, last_modify)
 ngx.say(out)
