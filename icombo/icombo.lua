@@ -1,5 +1,5 @@
 -------------------------------
--- iCombo version 0.2.2 beta
+-- iCombo version 0.2.2
 -------------------------------
 -------- explode string -------
 function explode(s, delimiter)
@@ -38,22 +38,6 @@ function fileRead(filename)
     local t = f:read("*all")
     f:close()
     return t
-end
--------- stream output file --------
-function fileStreamOut(filename)
-    -- 8K
-    local BUFSIZE = 8192
-    local f = io.open(filename, "r")
-    if f == nil then
-       return
-    end
-    while true do
-       local lines, rest = f:read(BUFSIZE)
-       if not lines then break end
-       ngx.print(lines)
-       ngx.flush(true)
-    end
-    f:close()    
 end
 -------- write file --------
 function fileWrite(filename, content)
@@ -216,8 +200,8 @@ end
 local up_cache = last_modify > combo_modify
 -- cache valid
 if not up_cache then
-    fileStreamOut(combo_file)
-    ngx.exit(200)
+    local icombo_sub = '/icombo_sub/'..md5_req_url..".combo"
+    return ngx.exec(icombo_sub)
 end
 
 -- cache expire or nil
@@ -236,8 +220,8 @@ for i = 1, size, 1 do
         else
             log(uris[i].." read old cache file", 0)
             ngx.header.last_modified = ngx.http_time(combo_modify)
-            fileStreamOut(combo_file)
-            ngx.exit(200)
+            local icombo_sub = '/icombo_sub/'..md5_req_url..".combo"
+            return ngx.exec(icombo_sub)
         end        
     end
     if file_out:sub(1,3) == bom then

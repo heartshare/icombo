@@ -12,9 +12,7 @@ iCombo提供比Minify、concat模块更好的并发性能，iCombo，你值得�
 5、错误日志记录
 
 **[环境要求]**  
-Nginx:   1.6+  
-Ngx_lua: 0.9.12+  
-LUAJIT:  2.0.2+
+Nginx + Ngx_lua + LUAJIT  
 
 **[安装/配置]**  
 一、安装lua posix库:  
@@ -39,6 +37,10 @@ LUAJIT:  2.0.2+
         set $max_files 20;
         set $admin_ip "192.168.8.63,192.168.8.181";
         content_by_lua_file /usr/local/nginx/conf/icombo/icombo.lua;
+    }
+    location /icombo_sub/ {
+        alias /dev/shm/icombo/;
+        internal;
     }
  }
 ```

@@ -1,6 +1,8 @@
-v0.2.2 beta
-1、优化ngx.var代码，避免重复调用ngx.var导致内存增加的问题
-2、修改cache_dir默认为空字符串
+v0.2.2
+1、取消流式输出，采用ngx.exec，性能更佳
+2、取消环境版本要求，Nginx + Ngx_lua + LUAJIT即可
+3、优化ngx.var代码，避免重复调用ngx.var导致内存增加的问题
+4、修改cache_dir默认为空字符串
 
 v0.2.1
 1、增加max_files，限制文件合并数目
