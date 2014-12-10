@@ -1,5 +1,5 @@
 -------------------------------
--- iCombo version 0.2.3
+-- iCombo version 0.2.3 beta
 -------------------------------
 -------- explode string -------
 function explode(s, delimiter)
