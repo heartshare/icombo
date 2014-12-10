@@ -1,5 +1,5 @@
 -------------------------------
--- iCombo version 0.2.2
+-- iCombo version 0.2.3
 -------------------------------
 -------- explode string -------
 function explode(s, delimiter)
@@ -191,6 +191,7 @@ end
 
 local md5_req_url  = ngx.md5(req_url)
 local combo_file   = cache_dir..md5_req_url..".combo"
+local icombo_sub   = '/icombo_sub/'..md5_req_url..".combo"
 local combo_modify = posix.stat(combo_file, "mtime") 
 -- cache nil
 if nil == combo_modify then
@@ -200,7 +201,6 @@ end
 local up_cache = last_modify > combo_modify
 -- cache valid
 if not up_cache then
-    local icombo_sub = '/icombo_sub/'..md5_req_url..".combo"
     return ngx.exec(icombo_sub)
 end
 
@@ -220,7 +220,6 @@ for i = 1, size, 1 do
         else
             log(uris[i].." read old cache file", 0)
             ngx.header.last_modified = ngx.http_time(combo_modify)
-            local icombo_sub = '/icombo_sub/'..md5_req_url..".combo"
             return ngx.exec(icombo_sub)
         end        
     end
@@ -262,7 +261,7 @@ end
 
 local res = fileWrite(combo_file, out)
 if res == nil then
-    log('cache write fail')
+    log('cache write fail, please check cache_dir permitted access')
 end
 posix.utime(combo_file, last_modify)
-ngx.say(out)
+return ngx.exec(icombo_sub)
