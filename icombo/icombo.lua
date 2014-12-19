@@ -155,7 +155,7 @@ else
 end
 
 -- delete cache file
-if ngx.var.arg_c ~=nil and ngx.var.admin_ip ~= nil then
+if ngx.var.arg_c ~= nil and ngx.var.admin_ip ~= nil then
     local admin_ip = explode(ngx.var.admin_ip, ",");
     local ip       = getClientIp()
     if (tableFind(admin_ip, ip)) ~= nil then
@@ -244,7 +244,7 @@ t_out = nil
 if ext == "css" then
     -- remove css comment
     local css_trim = ngx.var.css_trim
-    if css_trim ~=nil and css_trim:lower() == "on" then
+    if css_trim ~= nil and css_trim:lower() == "on" then
         out = removeCssComents(out)
     end
     -- replace images path
