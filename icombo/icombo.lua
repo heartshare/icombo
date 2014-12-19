@@ -172,7 +172,7 @@ for i = 1, size, 1 do
     if file_info == nil then
         log(uris[i].." file not found")
     end
-    if i_m_s == nil and (file_info["type"] ~= "regular" or getFileExt(uris[i]) ~= ext) then
+    if file_info["type"] ~= "regular" or getFileExt(uris[i]) ~= ext then
         log(uris[i].." extension is error")
     end
     if file_info["mtime"] > last_modify then
