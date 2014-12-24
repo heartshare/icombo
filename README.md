@@ -2,7 +2,7 @@ iCombo: 合并CSS、JS文件、减少连接数
 =======
 iCombo提供比Minify、concat模块更好的并发性能，iCombo，你值得拥有！    
 iCombo已经在百万PV的网站正常使用，你值得试试！  
-同时欢迎你提出宝贵建议，QQ讨论群：38390139   
+同时欢迎你提出宝贵建议。 
 
 **[特性]**  
 1、兼容minify的 f 参数，如 ?f=1.css,2.css,3.css  
