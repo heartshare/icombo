@@ -125,7 +125,6 @@ local file_info        = 0
 local last_modify      = 0
 local http_last_modify = 0
 local count            = 0
-local i_m_s            = ngx.req.get_headers()["If-Modified-Since"]
 
 -- only allow js css
 ext = getFileExt(uris[1])
@@ -183,11 +182,6 @@ end
 ngx.header.content_type  = types[ext]
 http_last_modify         = ngx.http_time(last_modify)
 ngx.header.last_modified = http_last_modify
-
--- return 304
-if i_m_s == http_last_modify then
-    ngx.exit(304)
-end
 
 local md5_req_url  = ngx.md5(req_url)
 local combo_file   = cache_dir..md5_req_url..".combo"
