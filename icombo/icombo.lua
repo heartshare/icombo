@@ -1,5 +1,5 @@
 -------------------------------
--- iCombo version 0.2.3
+-- iCombo version 0.2.4 beta
 -------------------------------
 -------- explode string -------
 function explode(s, delimiter)
@@ -181,7 +181,6 @@ end
 
 ngx.header.content_type  = types[ext]
 http_last_modify         = ngx.http_time(last_modify)
-ngx.header.last_modified = http_last_modify
 
 local md5_req_url  = ngx.md5(req_url)
 local combo_file   = cache_dir..md5_req_url..".combo"
@@ -213,7 +212,6 @@ for i = 1, size, 1 do
            log(uris[i].." content is empty")
         else
             log(uris[i].." read old cache file", 0)
-            ngx.header.last_modified = ngx.http_time(combo_modify)
             return ngx.exec(icombo_sub)
         end        
     end

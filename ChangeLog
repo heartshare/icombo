@@ -1,3 +1,6 @@
+v0.2.4 beta
+1、取消设定Last-Modified值
+
 v0.2.3
 1、生成缓存后，也采用ngx.exec输出
 2、由Nginx输出304，效率更高
