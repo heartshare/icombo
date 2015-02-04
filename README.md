@@ -3,7 +3,7 @@ iCombo提供比Minify、concat模块更好的并发性能，iCombo，你值得�
 iCombo已经在百万PV的网站正常使用，你值得试试！  
 同时欢迎你提出宝贵建议。 
 
-##  
+## 特性
 * 兼容minify的 f 参数，如 ?f=1.css,2.css,3.css  
 * 可以将图片的相对路径，替换为域名的方式   
 * 压缩CSS的代码（删除注释、换行、精简颜色等）  
@@ -13,8 +13,7 @@ iCombo已经在百万PV的网站正常使用，你值得试试！
 ## 环境要求
 Nginx + Ngx_lua + LUAJIT  
 
-## 安装/配置
-### 安装lua posix库:  
+## 安装lua posix库:  
 ```bash
 # wget http://git.alpinelinux.org/cgit/luaposix/snapshot/luaposix-5.1.8.tar.bz2
 # tar jxvf luaposix-5.1.8.tar.bz2
@@ -25,7 +24,7 @@ Nginx + Ngx_lua + LUAJIT
 # make install CC=gcc
 ```
 
-### 配置nginx：  
+## 配置nginx：  
 * 将icombo目录，放至/usr/local/nginx/conf/目录  
 * 修改配置文件：  
 ```bash
@@ -43,10 +42,10 @@ Nginx + Ngx_lua + LUAJIT
     }
  }
 ```
-### 访问URL：  
+## 访问URL：  
 http://x.x.x.x/?f=static/index/header.css,static/index/footer.css
 
-### 常用功能  
+## 常用功能  
 * 自定义CSS、JS目录（默认在当前目录）
 ```bash
 set $css_dir "include/css/";
