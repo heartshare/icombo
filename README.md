@@ -25,8 +25,8 @@ Nginx + Ngx_lua + LUAJIT
 ```
 
 ## 配置nginx：  
-* 将icombo目录，放至/usr/local/nginx/conf/目录  
-* 修改配置文件：  
+1. 将icombo目录，放至/usr/local/nginx/conf/目录  
+2. 修改配置文件：  
 ```bash
  http {
     location = / {
