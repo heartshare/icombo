@@ -1,21 +1,21 @@
-iCombo: 合并CSS、JS文件、减少连接数
+# iCombo: 合并CSS、JS文件、减少连接数
 =======
 iCombo提供比Minify、concat模块更好的并发性能，iCombo，你值得拥有！    
 iCombo已经在百万PV的网站正常使用，你值得试试！  
 同时欢迎你提出宝贵建议。 
 
-**[特性]**  
+##  
 1、兼容minify的 f 参数，如 ?f=1.css,2.css,3.css  
 2、可以将图片的相对路径，替换为域名的方式   
 3、压缩CSS的代码（删除注释、换行、精简颜色等）  
 4、一键删除服务器的所有缓存文件  
 5、错误日志记录
 
-**[环境要求]**  
+## 环境要求
 Nginx + Ngx_lua + LUAJIT  
 
-**[安装/配置]**  
-一、安装lua posix库:  
+## 安装/配置
+### 一、安装lua posix库:  
 ```bash
 # wget http://git.alpinelinux.org/cgit/luaposix/snapshot/luaposix-5.1.8.tar.bz2
 # tar jxvf luaposix-5.1.8.tar.bz2
@@ -26,7 +26,7 @@ Nginx + Ngx_lua + LUAJIT
 # make install CC=gcc
 ```
 
-二、配置nginx：  
+### 二、配置nginx：  
 1、将icombo目录，放至/usr/local/nginx/conf/目录  
 2、修改配置文件：  
 ```bash
@@ -44,10 +44,10 @@ Nginx + Ngx_lua + LUAJIT
     }
  }
 ```
-三、访问URL：  
+### 三、访问URL：  
 http://x.x.x.x/?f=static/index/header.css,static/index/footer.css
 
-四、常用功能  
+### 四、常用功能  
 1、自定义CSS、JS目录（默认在当前目录）
 ```bash
 set $css_dir "include/css/";
@@ -78,7 +78,7 @@ set $admin_ip "192.168.8.63,192.168.8.181";
 链接增加&c=1即可，页面内容显示sucess即成功：  
 http://x.x.x.x/?f=static/index/header.css,static/index/footer.css&c=1
 
-**[感谢]**  
+## 感谢 
 感谢Nginx   http://nginx.org  
 感谢LuaJIT  http://luajit.org/  
 感谢春哥    http://www.weibo.com/agentzh
