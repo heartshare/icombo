@@ -1,23 +1,23 @@
-v0.2.4 beta
-1、取消设定Last-Modified值
+v0.2.4
+1. 取消设定Last-Modified值
 
 v0.2.3
-1、生成缓存后，也采用ngx.exec输出
-2、由Nginx输出304，效率更高
+1. 生成缓存后，也采用ngx.exec输出
+2. 由Nginx输出304，效率更高
 
 v0.2.2
-1、取消流式输出，采用ngx.exec，性能更佳
-2、取消环境版本要求，Nginx + Ngx_lua + LUAJIT即可
-3、优化ngx.var代码，避免重复调用ngx.var导致内存增加的问题
-4、修改cache_dir默认为空字符串
+1. 取消流式输出，采用ngx.exec，性能更佳
+2. 取消环境版本要求，Nginx + Ngx_lua + LUAJIT即可
+3. 优化ngx.var代码，避免重复调用ngx.var导致内存增加的问题
+4. 修改cache_dir默认为空字符串
 
 v0.2.1
-1、增加max_files，限制文件合并数目
+1. 增加max_files，限制文件合并数目
 
 v0.2
-1、采用流式输出，避免大并发下lua not enough memory的问题；
-2、优化代码
-3、环境要求Nginx1.6+, Ngx_lua0.9.12+
+1. 采用流式输出，避免大并发下lua not enough memory的问题；
+2. 优化代码
+3. 环境要求Nginx1.6+, Ngx_lua0.9.12+
 
 v0.1 (2014/11/11)
 基本功能

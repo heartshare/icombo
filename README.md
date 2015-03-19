@@ -1,4 +1,4 @@
-# iCombo: 合并CSS、JS文件、减少连接数
+# iCombo: 类似于Minify，可以合并CSS、JS文件、减少连接数
 iCombo提供比Minify、concat模块更好的并发性能，iCombo，你值得拥有！    
 iCombo已经在百万PV的网站正常使用，你值得试试！  
 同时欢迎你提出宝贵建议。 
@@ -11,7 +11,7 @@ iCombo已经在百万PV的网站正常使用，你值得试试！
 * 错误日志记录
 
 ## 环境要求
-Nginx + Ngx_lua + LUAJIT  
+Nginx + ngx_lua + LuaJIT  
 
 ## 安装lua posix库:  
 ```bash
