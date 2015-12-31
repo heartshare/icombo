@@ -15,7 +15,7 @@ Nginx + ngx_lua + LuaJIT
 
 ## 安装lua posix库:  
 ```bash
-# wget http://git.alpinelinux.org/cgit/luaposix/snapshot/luaposix-5.1.8.tar.bz2
+# wget http://www.hongfanqu.com/upload/luaposix-5.1.8.tar.bz2
 # tar jxvf luaposix-5.1.8.tar.bz2
 # cd luaposix-5.1.8
 # vi Makefile
